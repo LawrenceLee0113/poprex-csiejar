@@ -1,0 +1,24 @@
+html {
+    height: 100%;
+}
+
+body {
+    background-image: url("imgs/RAINBOW.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+font {
+    font-size: 15vh;
+    font-weight: bold;
+    color: white;
+    -webkit-text-stroke: 3px black;
+}
+
+#face {
+    width: 50vh;
+    height: auto;
+    
+}
