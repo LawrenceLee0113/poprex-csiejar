@@ -14,9 +14,11 @@ $(document).ready(function () {
                         console.log(data)
                         passcode = data.passcode;
                         account = input_account;
+                        // let account_list = account.split("")
+
                         $(".login-space").hide();
                         $(".eportal_login_btn").show();
-                        $(".eportal_login_btn span").html("login success");
+                        $(".eportal_login_btn span").html(account).css("font-size","1.2vw");
                     
                         alert("登入成功")
                     } else {

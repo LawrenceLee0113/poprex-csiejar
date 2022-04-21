@@ -1,6 +1,10 @@
 html {
     height: 100%;
 }
+*{
+    padding: 0;
+    margin: 0;
+}
 
 body {
     background-image: url("imgs/RAINBOW.jpg");
@@ -87,32 +91,47 @@ font {
     overflow: auto;
 }
 .login-area .eportal_login_btn{
-    width: 100px;
-    height: 60px;
-    background-color: #aaa;
+    width: 60px;
     position: fixed;
     top: 20px;
-    right: 20px;
+    left: 20px;
+}
+.eportal_login_btn{
+    width: 60px;
+
+}
+.eportal_login_btn a{
+    text-decoration:none;
+}
+.eportal_login_btn a{
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+}
+.eportal_login_btn span{
+    font-size: 20px;
+    text-align: center;
+    color: rgb(255, 177, 177);
 }
 
 .login-area .login-space{
     width: 450px;
     height: 200px;
-    background-color: #aaa;
+    background-color: rgba(255, 227, 227, 0.834);
     position: fixed;
     top: 200px;
     right: 0;
     left: 0;
-    margin: auto;
-    padding: 20px;
+    margin:auto;
+    padding-bottom: 20px;
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
+    border-radius:10px;
+    border: 2px solid rgb(20, 20, 20);
     
 }
+
 .login-area .cancel{
     width: 20px;
     height: 20px;
@@ -122,22 +141,11 @@ font {
     position: fixed;
     top: 20px;right: 20px;
 }
-.center-area{
-    width: 300px;
-    /* height: 180px; */
-    position: relative;
-}
-.login-area input[type="text"]
-{
-    position: absolute;
-    left: 100px;
-}
-.login-area input[type="password"]
-{
-    position: absolute;
-    left: 100px;
-}
-.login-area label{
-    position: absolute;
-    left: 0;
+
+.ui_btn {
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
 }

@@ -73,8 +73,25 @@ function upload_data(clicks) {
         "json"
     );
 }
+function detectMob() {
+    const toMatch = [
+        /Android/i,
+        /webOS/i,
+        /iPhone/i,
+        /iPad/i,
+        /iPod/i,
+        /BlackBerry/i,
+        /Windows Phone/i
+    ];
+    
+    return toMatch.some((toMatchItem) => {
+        return navigator.userAgent.match(toMatchItem);
+    });
+}
+
 var clicks = 0;
 $(document).ready(function () {
+    // console.log(detectMob())
     demo_item = $(".data_item").clone();
     var last_click = 0;
     function reload(time) {
@@ -91,13 +108,18 @@ $(document).ready(function () {
         }
     }
     let body = $("body")
-    $(body).keydown(down);
-    $(body).mousedown(down);
-    $(body).bind("touchstart",down)
+    if(detectMob()){
+        
+        $(body).bind("touchstart",down)
+        $(body).bind("touchend",up)
+    }else{
+        $(body).keydown(down);
+        $(body).mousedown(down);
 
-    $(body).keyup(up);
-    $(body).mouseup(up);
-    $(body).bind("touchend",up)
+        $(body).keyup(up);
+        $(body).mouseup(up);
+    }
+
 
     reload(5);
 });

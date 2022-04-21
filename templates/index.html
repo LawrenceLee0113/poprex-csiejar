@@ -20,6 +20,15 @@
 </head>
 
 <body>
+    <script>
+        $(document).ready(function () {
+            $(".eportal_login_btn a").click(function (e) { 
+                e.preventDefault();
+                
+            });
+        });
+    </script>
+    
     <center>
         <div id="title">
             <font>POP REX</font>
@@ -78,19 +87,36 @@
         });
     </script>
     <div class="login-area">
-        <div class="eportal_login_btn">
-            <span>eportal登入</span>
+        <div class = "eportal_login_btn">
+            <a href="">
+    
+                <img src="https://ik.imagekit.io/csiejarimgstorage/poprexImage/icons8-login-64_CGFVcCi4B.png?ik-sdk-version=javascript-1.4.3&updatedAt=1650556731365" alt="login_icon">
+                <span>登入</span>
+            </a>
         </div>
+        <script>
+            $(document).ready(function () {
+                
+                $("#info").click(function (e) { 
+                    alert("使用此eportal登入時，即同意本網站蒐集eportal基本資料，包刮：姓名、學號、班級、電話")
+                    
+                });
+            });
+        </script>
         <div class = "login-space" style="display: none">
-            <div class="center-area">
+            <h1>eportal 登入</h1>
+            <div class="flex_item">
                 <label for="">eportal 帳號</label>
                 <input type="text" id = "account_input">
-                <br>
+            </div>
+            <div class="flex_item">
                 <label for="">eportal 密碼</label>
                 <input type="password" id = "password_input">
-                <br>
+            </div>
+            <div class="flex_item ui_btn">
+                <button id = "info">使用條款</button>
                 <button id = "submit">確認送出</button>
-                <button id = "cancel_btn">取消</button>
+                <button id = "cancel_btn">取消登入</button>
             </div>
         </div>
     </div>
