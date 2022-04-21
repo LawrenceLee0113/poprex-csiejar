@@ -93,9 +93,11 @@ $(document).ready(function () {
     let body = $("body")
     $(body).keydown(down);
     $(body).mousedown(down);
+    $(body).bind("touchstart",down)
 
     $(body).keyup(up);
     $(body).mouseup(up);
+    $(body).bind("touchend",up)
 
     reload(5);
 });
