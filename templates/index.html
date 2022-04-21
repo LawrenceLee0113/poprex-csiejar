@@ -8,16 +8,18 @@
     <title>Rex Pop</title>
     <link rel="stylesheet" href="../static/style.css">
 
-    <script src="jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../static/script2.js"></script>
     <script src="../static/script.js"></script>
+    
     <script>
-        
+
     </script>
     <link rel="short icon"
         href="https://ik.imagekit.io/csiejarimgstorage/poprexImage/rex.icon_e7QQx1MMd.png?ik-sdk-version=javascript-1.4.3&updatedAt=1650001333253">
 </head>
 
-<body id="main">
+<body>
     <center>
         <div id="title">
             <font>POP REX</font>
@@ -25,14 +27,73 @@
         <div>
             <font id="score">0</font>
         </div>
-        <div><img id="face1"
+        <div id = "face">
+            <img id="face1"
                 src="https://ik.imagekit.io/csiejarimgstorage/poprexImage/rex0_ewOou6QTyX.png?ik-sdk-version=javascript-1.4.3&updatedAt=1650001333461"
                 alt="">
-                <img id="face2"
+            <img id="face2"
                 src="https://ik.imagekit.io/csiejarimgstorage/poprexImage/rex1_AP9KYtbB4.png?ik-sdk-version=javascript-1.4.3&updatedAt=1650001333459"
-                alt="" style="display:none;"></div>
-        
+                alt="" style="display:none;">
+        </div>
+        <div id="score-board">
+            
+        </div>
+        <div class="content">
+            <div class="data_title">
+                <label class="lab_ranking">名次</label>
+                <label class="lab_class">班級</label>
+                <label class="lab_name">名子</label>
+                <label class="lab_id">學號</label>
+                <label class="lab_click">次數</label>
+            </div>
+            <div class="data_content">
+    
+                <div class="data_item" style="display:none">
+                    <label class="lab_ranking">名次</label>
+                    <label class="lab_class">班級</label>
+                    <label class="lab_name">名子</label>
+                    <label class="lab_id">學號</label>
+                    <label class="lab_click">次數</label>
+                </div>
+    
+            </div>
+        </div>
     </center>
+    <script>
+        $(document).ready(function () {
+            // var account = ""
+            
+            $(".eportal_login_btn").click(function (e) { 
+                if(account ==""){
+                    $(this).hide();
+                    $(".login-space").show();
+                
+                }
+                
+            });
+            $("#cancel_btn").click(function (e) { 
+                $(".login-space").hide();
+                $(".eportal_login_btn").show();
+            });
+        });
+    </script>
+    <div class="login-area">
+        <div class="eportal_login_btn">
+            <span>eportal登入</span>
+        </div>
+        <div class = "login-space" style="display: none">
+            <div class="center-area">
+                <label for="">eportal 帳號</label>
+                <input type="text" id = "account_input">
+                <br>
+                <label for="">eportal 密碼</label>
+                <input type="password" id = "password_input">
+                <br>
+                <button id = "submit">確認送出</button>
+                <button id = "cancel_btn">取消</button>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

@@ -18,7 +18,126 @@ font {
 }
 
 #face {
-    width: 50vh;
-    height: auto;
+    /* width: 50vh; */
+    height: 70vh;
     
+}
+#face img{
+    height: 100%;
+}
+#score-board{
+    width: 50vw;
+    
+}
+
+.content {
+    display: block;
+    width: 500px;
+    height: 300px;
+    background-color: #aaa;
+    border: 3px solid #111;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.data_title {
+    width: calc(100% - 17px);
+    height: 20px;
+    background-color: #bbb;
+    display: flex;
+}
+
+.data_item {
+    width: 100%;
+    height: 20px;
+    display: flex;
+}
+
+.lab_ranking {
+    flex: 1;
+}
+
+.lab_class {
+    flex: 3;
+}
+
+.lab_name {
+    flex: 3;
+}
+
+.lab_id {
+    flex: 5;
+}
+
+.lab_click {
+    flex: 2;
+}
+
+.data_item label {
+    text-align: center;
+}
+
+.data_title label {
+    text-align: center;
+}
+
+.data_content {
+    width: 100%;
+    height: calc(100% - 20px);
+    overflow: auto;
+}
+.login-area .eportal_login_btn{
+    width: 100px;
+    height: 60px;
+    background-color: #aaa;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-area .login-space{
+    width: 450px;
+    height: 200px;
+    background-color: #aaa;
+    position: fixed;
+    top: 200px;
+    right: 0;
+    left: 0;
+    margin: auto;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.login-area .cancel{
+    width: 20px;
+    height: 20px;
+    background-color: #bbb;
+    border: 1px solid #000000;
+    border-radius:50%;
+    position: fixed;
+    top: 20px;right: 20px;
+}
+.center-area{
+    width: 300px;
+    /* height: 180px; */
+    position: relative;
+}
+.login-area input[type="text"]
+{
+    position: absolute;
+    left: 100px;
+}
+.login-area input[type="password"]
+{
+    position: absolute;
+    left: 100px;
+}
+.login-area label{
+    position: absolute;
+    left: 0;
 }

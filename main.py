@@ -44,6 +44,7 @@ def checkacpw():
     return jsonify({"message":"false"})
 
 def check_passcode(ac,passcode):
+  print(ac)
   if ac == "":
     return False
   
