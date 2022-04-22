@@ -51,7 +51,7 @@ function upload_data(clicks) {
                     location.reload();
                 }
             } else if (data.message == "success") {
-                $(".data_content").empty();
+                $(".data_content_warp").empty();
                 var accounts = ranking_sort(data.accounts)
                 // console.log(accounts)
                 for (i of accounts) {
@@ -63,7 +63,7 @@ function upload_data(clicks) {
                     $(output_item).children(".lab_id").html(i.id)
                     $(output_item).children(".lab_click").html(i.clicks)
                     $(output_item).show()
-                    $(".data_content").append(output_item);
+                    $(".data_content_warp").append(output_item);
                     // console.log($(output_item).html())
                     // counter++;
                 }

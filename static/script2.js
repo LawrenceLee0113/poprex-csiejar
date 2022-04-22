@@ -18,7 +18,7 @@ $(document).ready(function () {
 
                         $(".login-space").hide();
                         $(".eportal_login_btn").show();
-                        $(".eportal_login_btn span").html(account).css("font-size","1.2vw");
+                        $(".eportal_login_btn span").html(data.name);
                     
                         alert("登入成功")
                     } else {

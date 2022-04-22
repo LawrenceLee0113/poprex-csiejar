@@ -37,9 +37,10 @@ def checkacpw():
   ac = request.form.get("account")
   pw = request.form.get("password")
   eportaldata = eportal.check_eportal(ac,pw)
+  
   if eportaldata["res"]:
     
-    return jsonify({"message":"true","passcode":login_data(ac,eportaldata)})
+    return jsonify({"message":"true","passcode":login_data(ac,eportaldata),"name":eportaldata["name "]})
   else:  
     return jsonify({"message":"false"})
 
