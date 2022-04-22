@@ -11,15 +11,37 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../static/script2.js"></script>
     <script src="../static/script.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="463794153045-1n3oqjl5bt8m10q6pp8di8pjrbc3c4cc.apps.googleusercontent.com">
+
     
     <script>
 
     </script>
     <link rel="short icon"
         href="https://ik.imagekit.io/csiejarimgstorage/poprexImage/rex.icon_e7QQx1MMd.png?ik-sdk-version=javascript-1.4.3&updatedAt=1650001333253">
-</head>
+    <script>
+        function onSignIn(googleUser) {
+  var profile = googleUser.getBasicProfile();
+  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+  console.log('Name: ' + profile.getName());
+  console.log('Image URL: ' + profile.getImageUrl());
+  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+}
+    </script>
+    </head>
 
 <body>
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    <a href="#" onclick="signOut();">Sign out</a>
+<script>
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
+</script>
     <script>
         $(document).ready(function () {
             $(".eportal_login_btn a").click(function (e) { 
