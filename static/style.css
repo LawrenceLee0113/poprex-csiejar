@@ -36,7 +36,8 @@ font {
 
 .content {
     display: block;
-    width: 500px;
+    width: 100%;
+    max-width: 720px;
     height: 300px;
     background-color: #aaa;
     border: 3px solid #111;
@@ -114,7 +115,8 @@ font {
 }
 
 .login-area .login-space{
-    width: 450px;
+    width: calc(100% - 44px);
+    max-width:450px;
     height: 200px;
     background-color: rgba(255, 227, 227, 0.834);
     position: fixed;
