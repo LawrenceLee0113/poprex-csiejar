@@ -1,37 +1,40 @@
-var passcode = "";//防止登兩個帳號按
-var account = "";
 $(document).ready(function () {
-    $("#submit").click(function (e) {
-        let input_account = $("#account_input").val();//帳號
-        const password = $("#password_input").val();//密碼
-        if (input_account == "" || password == "") {
-            alert("帳號和密碼要填東西啊")
+    //score board open and close
+    var login_page = false;
+    $(".data_title").click(function (e) {
+        if (open) {
+
+            $(".content").css("top", "calc(100vh - 46px)").css("bottom", "auto");
+            $("#up_img").show();
+            $("#down_img").hide();
+            open = false;
         } else {
+            $(".content").css("top", "auto").css("bottom", "0px");
 
-            $.post("/eportal", { "account": input_account, "password": password },
-                function (data, textStatus, jqXHR) {
-                    if (data.message == "true") {
-                        console.log(data)
-                        passcode = data.passcode;
-                        account = input_account;
-                        // let account_list = account.split("")
-
-                        $(".login-space").hide();
-                        $(".eportal_login_btn").show();
-                        $(".eportal_login_btn span").html(data.name);
-                    
-                        alert("登入成功")
-                    } else {
-                        alert("帳號或密碼錯誤!")
-                    }
-
-                },
-                "json"
-            );
+            $("#down_img").show();
+            $("#up_img").hide();
+            open = true;
         }
+
+    });
+    //cancel a direction
+    $(".eportal_login_btn a").click(function (e) {
+        e.preventDefault();
+
+    });
+    $(".content a").click(function (e) {
+        e.preventDefault();
+
+    });
+    $(".eportal_login_btn").click(function (e) { 
+        e.preventDefault();
+        $(".login-space").show();
+        
+    });
+    $(".cancel_login_ntn").click(function (e) { 
+        e.preventDefault();
+        $(".login-space").hide();
     });
     
     
-
 });
-
