@@ -47,7 +47,7 @@ function upload_data(clicks) {
         function (data, textStatus, jqXHR) {
             if (data.message == "fail") {
                 if (account != "") {
-                    alert("檢查碼錯誤 重新登入")
+                    alert("還敢同時登兩個裝置啊87")
                     location.reload();
                 }
             } else if (data.message == "success") {

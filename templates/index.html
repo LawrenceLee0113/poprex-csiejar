@@ -51,7 +51,7 @@
             <div class="data_title">
                 <label class="lab_ranking">名次</label>
                 <label class="lab_class">班級</label>
-                <label class="lab_name">名字</label>
+                <label class="lab_name">姓名</label>
                 <!-- <label class="lab_id">學號</label> -->
                 <label class="lab_click">次數</label>
             </div>
@@ -60,7 +60,7 @@
                 <div class="data_item" style="display:none">
                     <label class="lab_ranking">名次</label>
                     <label class="lab_class">班級</label>
-                    <label class="lab_name">名字</label>
+                    <label class="lab_name">姓名</label>
                     <!-- <label class="lab_id">學號</label> -->
                     <label class="lab_click">次數</label>
                 </div>
@@ -98,19 +98,19 @@
             $(document).ready(function () {
                 
                 $("#info").click(function (e) { 
-                    alert("使用此eportal登入時，即同意本網站蒐集eportal基本資料，包刮：姓名、學號、班級、電話")
+                    alert("使用此ePortal登入時，即同意本網站蒐集ePortal基本資料，包括：姓名、學號、班級、電話")
                     
                 });
             });
         </script>
         <div class = "login-space" style="display: none">
-            <h1>eportal 登入</h1>
+            <h1>ePortal 登入</h1>
             <div class="flex_item">
-                <label for="">eportal 帳號</label>
+                <label for="">帳號</label>
                 <input type="text" id = "account_input">
             </div>
             <div class="flex_item">
-                <label for="">eportal 密碼</label>
+                <label for="">密碼</label>
                 <input type="password" id = "password_input">
             </div>
             <div class="flex_item ui_btn">
