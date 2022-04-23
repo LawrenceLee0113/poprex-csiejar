@@ -14,6 +14,11 @@ function signOut() {
     
     $(".account_icon span").html("");
     $(".account_icon img").attr("src","");
+
+    $(".unlogin").show();
+    $('.logined').hide();
+
+    click_reset("reset");
     passcode = ""
     account = ""
     
@@ -35,7 +40,8 @@ function onSignIn(googleUser) {
             if(data.message == "true"){
                 account = id;
                 passcode = data.passcode;
-                let click = data.click;
+                let click = parseInt(data.click);
+                console.log(click)
                 $(".g-signin2").hide();
                 $(".google_signout").show();
 
@@ -47,9 +53,12 @@ function onSignIn(googleUser) {
 
                 $(".unlogin").hide();
                 $(".logined").css("display", "flex");
-
-                clicks = click
-                alert("登入成功")
+                
+              
+                // alert("登入成功")
+                click_reset("reset");
+                default_clicks = click
+                click_reset();
             }else if(data.message == "false"){
                 alert("登入失敗")
             }

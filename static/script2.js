@@ -1,6 +1,18 @@
 // !animation and upload js
 var clicks = 0;
+var default_clicks = 0;
 var renew = false;
+function click_reset(mode="default"){
+  if(mode=="default"){
+    score.innerText = default_clicks + clicks
+    
+  }else if(mode == "reset"){
+    
+    clicks = 0;
+    default_clicks = 0;
+    score.innerText = default_clicks + clicks
+  }
+}
 function start_renew(){
     reload(1);
     renew = true;
@@ -17,7 +29,7 @@ function up() {
     // alert("aaa")
     x = 0
     clicks += 1
-    score.innerText = clicks
+    score.innerText = default_clicks + clicks
     $("#face1").show();
     $("#face2").hide();
 }

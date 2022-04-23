@@ -61,7 +61,7 @@ def google_login():
       data = json.load(file)
     click = data["accounts"][id]["basic"]["clicks"]
     
-    return jsonify({"message":"true","passcode":create_passcode(id),"clicks":click})
+    return jsonify({"message":"true","passcode":create_passcode(id),"click":click})
 
   except Exception:
     return jsonify({"message":"false"})
