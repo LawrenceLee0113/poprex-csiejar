@@ -2,6 +2,19 @@
 var clicks = 0;
 var default_clicks = 0;
 var renew = false;
+function nFormatter(num) {
+    num = parseInt(num);
+    if (num >= 1000000000) {
+       return (num / 1000000000).toFixed(1).replace(/\.0$/, '') + 'G';
+    }
+    if (num >= 1000000) {
+       return (num / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
+    }
+    if (num >= 1000) {
+       return (num / 1000).toFixed(1).replace(/\.0$/, '') + 'K';
+    }
+    return num;
+}
 function click_reset(mode="default"){
   if(mode=="default"){
     score.innerText = default_clicks + clicks
@@ -60,6 +73,9 @@ function ranking_sort(data) {
     }
     return output;
 }
+var add_data = {
+
+}
 function upload_data(clicks) {
         
     $.post("/upload", { "account": account, "passcode": passcode, "clicks": clicks },
@@ -83,7 +99,23 @@ function upload_data(clicks) {
                     $(output_item).children(".lab_class").html(i.class)
                     $(output_item).children(".lab_name").html(i.name)
                     $(output_item).children(".lab_id").html(i.ig)
-                    $(output_item).children(".lab_click").html(i.clicks)
+                    var num;
+                    try{
+                        
+                        if(add_data[i.id] != i.clicks){
+                            num = parseInt(i.clicks) - parseInt(add_data[i.id])
+                            
+                        }else{
+                            num = ""
+                        }
+                    }catch (error) {
+                        console.error(error);
+                        // expected output: ReferenceError: nonExistentFunction is not defined
+                        // Note - error messages will vary depending on browser
+                    }
+                    
+                    $(output_item).children(".lab_click").html(num+"/s "+nFormatter(i.clicks))
+                    add_data[i.id] = i.clicks
                     if(i.id == account){
                         $(output_item).children("span").css({"color":"red","font-weight":"bolder"})
                         $("#self_ranking").html("#"+i.ranking)
