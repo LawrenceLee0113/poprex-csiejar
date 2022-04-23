@@ -117,7 +117,7 @@ $(document).ready(function () {
         e.preventDefault();
 
     });
-    $(".eportal_login_btn").click(function (e) { 
+    $(".account_icon").click(function (e) { 
         e.preventDefault();
         $(".login-space").show();
         $.get("/self_info", {"account":account},
@@ -135,6 +135,10 @@ $(document).ready(function () {
             "json"
         );
         
+    });
+  $(".login_btn").click(function (e) { 
+        e.preventDefault();
+        $(".login-space").show();
     });
     $(".cancel_login_ntn").click(function (e) { 
         e.preventDefault();

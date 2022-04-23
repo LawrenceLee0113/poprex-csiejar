@@ -1,3 +1,4 @@
+var change_input = false;
 $(document).ready(function () {
     $("#empty_input").click(function (e) { 
         e.preventDefault();
@@ -30,11 +31,9 @@ $(document).ready(function () {
             );
         }
     });
-    var change_input = false;
-    $(".login_btns .q_item input").change(function (e) { 
-        e.preventDefault();
+    $(".login_btns .q_item input").on("input propertychange", function () {
         change_input = true;
         $("#save_input").html("儲存資料！");
-        
+          
     });
 });
