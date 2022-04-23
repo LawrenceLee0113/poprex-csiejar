@@ -9,28 +9,6 @@ app = Flask(__name__)
 def index_page():
   return render_template("index.html")
 
-def login_data(ac,eportaldata):
-  with open("static/data/amount.json") as file:
-    data = json.load(file)
-  if ac in data["accounts"]:
-    data["accounts"][ac]["login_time"]+=1
-  else:
-    data["accounts"][ac] = {
-      "basic":{
-        "id":eportaldata["id"],
-        "clicks":0,
-        "name":eportaldata["name"],
-        "class":eportaldata["class"]
-      },
-      "login_time":1,
-      "passcode":""
-    }
-  passcode = uuid.uuid4()
-  data["accounts"][ac]["passcode"] = passcode
-  with open("static/data/amount.json", "w") as file:
-    json.dump(data, file)
-  return passcode
-
 def login_by_google(ac):
   with open("static/data/amount.json") as file:
     data = json.load(file)
@@ -79,25 +57,15 @@ def google_login():
       name = request.form.get("name")
       email = request.form.get("email")
       create_account(id,name,email)
-    return jsonify({"message":"true","passcode":create_passcode(id)})
+    with open("static/data/amount.json") as file:
+      data = json.load(file)
+    click = data["accounts"][id]["basic"]["clicks"]
+    
+    return jsonify({"message":"true","passcode":create_passcode(id),"clicks":click})
+
   except Exception:
     return jsonify({"message":"false"})
 
-
-
-
-
-@app.route('/eportal',methods=["POST"])
-def checkacpw():
-  ac = request.form.get("account")
-  pw = request.form.get("password")
-  eportaldata = eportal.check_eportal(ac,pw)
-  
-  if eportaldata["res"]:
-    
-    return jsonify({"message":"true","passcode":login_data(ac,eportaldata),"name":eportaldata["name"]})
-  else:  
-    return jsonify({"message":"false"})
 
 def check_passcode(ac,passcode):
   print(ac)
