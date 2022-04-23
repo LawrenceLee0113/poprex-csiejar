@@ -52,6 +52,8 @@ $(document).ready(function () {
         
         $(".account_icon span").html("");
         $(".account_icon img").attr("src","");
+        passcode = ""
+        account = ""
 
     });
     
