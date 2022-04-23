@@ -127,7 +127,8 @@ $(document).ready(function () {
                     $("#name_input").val(data.self_info["name"]);
                     $("#ig_input").val(data.self_info["ig"]);
                     $("#introduce_input").val(data.self_info["introduce"]);
-                }else if(message == "false"){
+                }else if(data.message == "false"){
+                    console.log(data)
                     alert("取得資料錯誤!!")
                 }
             },

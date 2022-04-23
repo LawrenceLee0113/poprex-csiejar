@@ -95,7 +95,7 @@ def checkacpw():
   
   if eportaldata["res"]:
     
-    return jsonify({"message":"true","passcode":login_data(ac,eportaldata),"name":eportaldata["name "]})
+    return jsonify({"message":"true","passcode":login_data(ac,eportaldata),"name":eportaldata["name"]})
   else:  
     return jsonify({"message":"false"})
 
@@ -146,13 +146,14 @@ def upload():
       nowdata["message"] = "fail"
       return jsonify(nowdata)
 
-@app.route('/self_info',methods=['get','POST'])
+@app.route('/self_info',methods=['GET','POST'])
 def edit_self_info():
   if request.method == 'GET':
     try:
-      ac = request.form.get("account")
+      ac = request.args.get("account")
       with open("static/data/amount.json") as file:
           data = json.load(file)
+      print(ac)
       output = {"self_info":data["accounts"][ac]["basic"],"message":"true"}
 
       return jsonify(output)
