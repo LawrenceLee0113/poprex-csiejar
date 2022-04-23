@@ -11,14 +11,12 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../static/script2.js"></script>
     <script src="../static/script.js"></script>
+    <script src="../static/script3.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <meta name="google-signin-client_id"
         content="463794153045-1n3oqjl5bt8m10q6pp8di8pjrbc3c4cc.apps.googleusercontent.com">
 
 
-    <script>
-
-    </script>
     <link rel="short icon"
         href="https://ik.imagekit.io/csiejarimgstorage/poprexImage/rex.icon_e7QQx1MMd.png?ik-sdk-version=javascript-1.4.3&updatedAt=1650001333253">
     <script>
@@ -55,7 +53,7 @@
         
     </script>
     <!-- login btn and log out btn -->
-    <div class="login-area">
+    <div class="login_area">
         <div class = "eportal_login_btn">
             <a href="">
     
@@ -63,23 +61,109 @@
                 <span>登入</span>
             </a>
         </div>
+
         <div class="account_icon eportal_login_btn" style="display:none;">
+            <!-- self icon -->
             <a href="">
     
                 <img src=""  alt="login_icon">
                 <span>name</span>
             </a>
         </div>
-        <div class = "login-space" style="display: none">
-            <h1>請選擇登入方式</h1>
-            <div class = "cancel_login_ntn">
-                <a><img src="https://ik.imagekit.io/csiejarimgstorage/poprexImage/close_KE-2w2TUP2.png?ik-sdk-version=javascript-1.4.3&updatedAt=1650644426410" alt=""></a>
-            </div>
-            <div class="login_btns">
+        <style>
+            .logined{
+                width: 100%;
+                height: 100%;
+                /* display: none; */
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .unlogin{
+                width: 100%;
+                height: 100%;
+                /* display: flex; */
+                flex-direction: column;
+                align-items: center;
+                display: none;
 
-                <div class="g-signin2" data-onsuccess="onSignIn"></div>
-                <a href="#" onclick="signOut();" class="google_sighout" style="display:none;">Sign out</a>
+            }
+            .q_item{
+                width: 70%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .google_signout{
+                width: 80px;
+                height: 30px;
+                background-color: rgba(166, 124, 255, 0.708);
+                border: 1px solid rgba(196, 196, 196, 0.78);
+                border-radius:30px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .google_signout span{
+                color: white;
+                text-decoration: none;
+                
+            }
+            a{
+                text-decoration: none;
+            }
+
+
+        </style>
+        <div class = "login-space" style="display: none">
+            <div class="logined">
+                <h1>帳戶設定-修改資料</h1>
+                <div class = "cancel_login_ntn">
+                    <a><img src="https://ik.imagekit.io/csiejarimgstorage/poprexImage/close_KE-2w2TUP2.png?ik-sdk-version=javascript-1.4.3&updatedAt=1650644426410" alt=""></a>
+                </div>
+                <div class="login_btns">
+                    <div class="q_item">
+                        <button id="default_input">恢復預設值</button>
+                        <button id="save_input">儲存資料！</button>
+                    </div>
+                    <div class="q_item">
+                        <span>學校班級：</span>
+                        <input type="text" placeholder="此處輸入學校班級" id="class_input" maxlength="10">
+                    </div>
+                    <div class="q_item">
+                        <span>暱稱：</span>
+                        <input type="text" placeholder="此處輸入暱稱(修改本名)" id="name_input" maxlength="10">
+                    </div>
+                    <div class="q_item">
+                        <span>IG：</span>
+                        <input type="text" placeholder="此處輸入IG" id="ig_input" >
+                    </div>
+                    <div class="q_item">
+                        <span>自我介紹：</span>
+                        <input type="text" placeholder="此處輸入自我介紹" id="introduce_input" maxlength="30">
+                    </div>
+                    <a href="#">
+                        <div onclick="signOut();" class="google_signout" >
+                            <span>登出</span>
+                        </div>
+                    </a>
+                </div>
+
             </div>
+
+            <div class="unlogin">
+                <h1>請選擇登入方式</h1>
+                <div class = "cancel_login_ntn">
+                    <a><img src="https://ik.imagekit.io/csiejarimgstorage/poprexImage/close_KE-2w2TUP2.png?ik-sdk-version=javascript-1.4.3&updatedAt=1650644426410" alt=""></a>
+                </div>
+                
+                <div class="login_btns">
+    
+                    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                    
+                </div>
+            </div>
+
         </div>
     </div>
     <!-- score board -->

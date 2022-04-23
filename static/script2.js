@@ -59,7 +59,7 @@ function upload_data(clicks) {
                     $(output_item).children(".lab_ranking").html(i.ranking)
                     $(output_item).children(".lab_class").html(i.class)
                     $(output_item).children(".lab_name").html(i.name)
-                    $(output_item).children(".lab_id").html(i.id)
+                    $(output_item).children(".lab_id").html(i.ig)
                     $(output_item).children(".lab_click").html(i.clicks)
                     $(output_item).show()
                     $(".data_content_warp").append(output_item);
@@ -93,18 +93,18 @@ $(document).ready(function () {
     //score board open and close
     var login_page = false;
     $(".data_title").click(function (e) {
-        if (open) {
+        if (login_page) {
 
             $(".content").css("top", "calc(100vh - 46px)").css("bottom", "auto");
             $("#up_img").show();
             $("#down_img").hide();
-            open = false;
+            login_page = false;
         } else {
             $(".content").css("top", "auto").css("bottom", "0px");
 
             $("#down_img").show();
             $("#up_img").hide();
-            open = true;
+            login_page = true;
         }
 
     });
@@ -120,6 +120,19 @@ $(document).ready(function () {
     $(".eportal_login_btn").click(function (e) { 
         e.preventDefault();
         $(".login-space").show();
+        $.get("/self_info", {"account":account},
+            function (data, textStatus, jqXHR) {
+                if(data.message == "true"){
+                    $("#class_input").val(data.self_info["class"]);
+                    $("#name_input").val(data.self_info["name"]);
+                    $("#ig_input").val(data.self_info["ig"]);
+                    $("#introduce_input").val(data.self_info["introduce"]);
+                }else if(message == "false"){
+                    alert("取得資料錯誤!!")
+                }
+            },
+            "json"
+        );
         
     });
     $(".cancel_login_ntn").click(function (e) { 

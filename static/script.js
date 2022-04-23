@@ -25,13 +25,16 @@ function onSignIn(googleUser) {
                 account = id;
                 passcode = data.passcode;
                 $(".g-signin2").hide();
-                $(".google_sighout").show();
+                $(".google_signout").show();
 
                 $(".eportal_login_btn").hide();
                 $('.account_icon').show();
                 
                 $(".account_icon span").html(name);
                 $(".account_icon img").attr("src",img);
+
+                $(".unlogin").hide();
+                $(".logined").css("display", "flex");
 
                 alert("登入成功")
             }else if(data.message == "false"){
@@ -42,10 +45,10 @@ function onSignIn(googleUser) {
     );
 }
 $(document).ready(function () {
-    $(".google_sighout").click(function (e) { 
+    $(".google_signout").click(function (e) { 
         e.preventDefault();
         $(".g-signin2").show();
-        $(".google_sighout").hide();
+        $(".google_signout").hide();
 
         $(".eportal_login_btn").show();
         $('.account_icon').hide();

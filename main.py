@@ -51,7 +51,10 @@ def create_account(id,name,email):
       "clicks":0,
       "name":name,
       "class":"no class",
-      "email":email
+      "email":email,
+      "ig":"none",
+      "introduce":"none"
+
     },
     "login_time":1,
     "passcode":""
@@ -142,7 +145,40 @@ def upload():
       nowdata = getnowdata()
       nowdata["message"] = "fail"
       return jsonify(nowdata)
-    
+
+@app.route('/self_info',methods=['get','POST'])
+def edit_self_info():
+  if request.method == 'GET':
+    try:
+      ac = request.form.get("account")
+      with open("static/data/amount.json") as file:
+          data = json.load(file)
+      output = {"self_info":data["accounts"][ac]["basic"],"message":"true"}
+
+      return jsonify(output)
+    except Exception:
+      return jsonify({"message":"false"})
+  elif request.method == 'POST':
+    try:
+      ac = request.form.get("account")
+      class_input = request.form.get("class")
+      ig_input = request.form.get("ig")
+      introduce_input = request.form.get("introduce")
+      name_input = request.form.get("name")
+      with open("static/data/amount.json") as file:
+        data = json.load(file)
+      
+      data["accounts"][ac]["basic"]["class"] = class_input
+      data["accounts"][ac]["basic"]["ig"] = ig_input
+      data["accounts"][ac]["basic"]["name"] = name_input
+      data["accounts"][ac]["basic"]["introduce"] = introduce_input
+      
+      with open("static/data/amount.json","w") as file:
+        json.dump(data, file)
+      return jsonify({"message":"true"})
+    except Exception:
+      return jsonify({"message":"false"})
+
 
 #run server
 if __name__ == "__main__":
