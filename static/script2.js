@@ -75,16 +75,28 @@ function upload_data(clicks) {
                 $(".data_content_warp").empty();
                 var accounts = ranking_sort(data.accounts)
                 // console.log(accounts)
+                let last_click;
                 for (i of accounts) {
-                    
                     let output_item = $(demo_item).clone();
+                    $(output_item).prop("id","ranking_"+i.ranking)
                     $(output_item).children(".lab_ranking").html(i.ranking)
                     $(output_item).children(".lab_class").html(i.class)
                     $(output_item).children(".lab_name").html(i.name)
                     $(output_item).children(".lab_id").html(i.ig)
                     $(output_item).children(".lab_click").html(i.clicks)
+                    if(i.id == account){
+                        $(output_item).children("span").css({"color":"red","font-weight":"bolder"})
+                        $("#self_ranking").html("#"+i.ranking)
+                        $("#last_ranking").html("#"+(parseInt(i.ranking)-1))
+                        $("#last_ranking_minus").html("("+last_click+")")
+                        $("#ranking_info").show();
+                        $("#self_area a").prop("href","#ranking_"+i.ranking)
+                        $("#last_area a").prop("href","#ranking_"+(parseInt(i.ranking)-1))
+                    }
+                    last_click = i.clicks
                     $(output_item).show()
                     $(".data_content_warp").append(output_item);
+                  
                     // console.log($(output_item).html())
                     // counter++;
                 }
