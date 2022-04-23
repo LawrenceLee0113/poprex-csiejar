@@ -30,7 +30,59 @@ def login_data(ac,eportaldata):
   with open("static/data/amount.json", "w") as file:
     json.dump(data, file)
   return passcode
-    
+
+def login_by_google(ac):
+  with open("static/data/amount.json") as file:
+    data = json.load(file)
+  if ac in data["accounts"]:
+    data["accounts"][ac]["login_time"]+=1
+    with open("static/data/amount.json", "w") as file:
+      json.dump(data, file)
+    True
+  else:
+    return False
+
+def create_account(id,name,email):
+  with open("static/data/amount.json") as file:
+    data = json.load(file)
+  data["accounts"][id] = {
+    "basic":{
+      "id":id,
+      "clicks":0,
+      "name":name,
+      "class":"no class",
+      "email":email
+    },
+    "login_time":1,
+    "passcode":""
+  }
+  with open("static/data/amount.json", "w") as file:
+    json.dump(data, file)
+
+def create_passcode(id):
+  with open("static/data/amount.json") as file:
+    data = json.load(file)
+  passcode = uuid.uuid4()
+  data["accounts"][id]["passcode"] = passcode
+  with open("static/data/amount.json", "w") as file:
+    json.dump(data, file)
+  return passcode
+
+@app.route('/google',methods=["POST"])
+def google_login():
+  try:
+    id = request.form.get("id")
+    if login_by_google(id) == False:
+      name = request.form.get("name")
+      email = request.form.get("email")
+      create_account(id,name,email)
+    return jsonify({"message":"true","passcode":create_passcode(id)})
+  except Exception:
+    return jsonify({"message":"false"})
+
+
+
+
 
 @app.route('/eportal',methods=["POST"])
 def checkacpw():

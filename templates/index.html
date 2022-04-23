@@ -52,19 +52,7 @@
     </center>
 
     <script>
-        function signOut() {
-            var auth2 = gapi.auth2.getAuthInstance();
-            auth2.signOut().then(function () {
-                console.log('User signed out.');
-            });
-            function onSignIn(googleUser) {
-                var profile = googleUser.getBasicProfile();
-                console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-                console.log('Name: ' + profile.getName());
-                console.log('Image URL: ' + profile.getImageUrl());
-                console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-            }
-        }
+        
     </script>
     <!-- login btn and log out btn -->
     <div class="login-area">
@@ -83,9 +71,9 @@
             <div class="login_btns">
 
                 <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                <a href="#" onclick="signOut();" id="google_sighout">Sign out</a>
             </div>
         </div>
-        <!-- <a href="#" onclick="signOut();" id="google_login" class="eportal_login_btn">Sign out</a> -->
     </div>
     <!-- score board -->
     <div class="content">
