@@ -25,13 +25,14 @@ function onSignIn(googleUser) {
                 account = id;
                 passcode = data.passcode;
                 $(".g-signin2").hide();
-                $(".google_sighout").show();
+                $("google_sighout").show();
 
                 $(".eportal_login_btn").hide();
                 $('.account_icon').show();
                 
-                $(".account_icon").html(name);
-                
+                $(".account_icon span").html(name);
+                $(".account_icon img").attr("src",img);
+
                 alert("登入成功")
             }else if(data.message == "false"){
                 alert("登入失敗")
