@@ -25,7 +25,7 @@ function onSignIn(googleUser) {
                 account = id;
                 passcode = data.passcode;
                 $(".g-signin2").hide();
-                $("google_sighout").show();
+                $(".google_sighout").show();
 
                 $(".eportal_login_btn").hide();
                 $('.account_icon').show();
@@ -42,6 +42,17 @@ function onSignIn(googleUser) {
     );
 }
 $(document).ready(function () {
-    
+    $(".google_sighout").click(function (e) { 
+        e.preventDefault();
+        $(".g-signin2").show();
+        $(".google_sighout").hide();
+
+        $(".eportal_login_btn").show();
+        $('.account_icon').hide();
+        
+        $(".account_icon span").html("");
+        $(".account_icon img").attr("src","");
+
+    });
     
 });
