@@ -15,7 +15,7 @@ function signOut() {
     $(".account_icon span").html("");
     $(".account_icon img").attr("src","");
 
-    $(".unlogin").show();
+    $(".unlogin").css("display","flex");
     $('.logined').hide();
 
     click_reset("reset");
@@ -34,6 +34,9 @@ function onSignIn(googleUser) {
     console.log('Name: ' + profile.getName());
     console.log('Image URL: ' + profile.getImageUrl());
     console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+    $("#self_name").html(name);
+    $("#self_id").html(id);
+    $("#self_gmail").html(email);   
     $(".login-space").hide();
     $.post("/google", {"id":id,"name": name,"img":img,"email":email},
         function (data, textStatus, jqXHR) {
