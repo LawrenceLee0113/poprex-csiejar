@@ -179,7 +179,15 @@ body{
 .championship_icon img {
     height: 100%;
 }
-
+.lab_ranking{
+    width: 1em;
+}
+.lab_class{
+    width: 10em;
+}
+.lab_name{
+    width: 10em;
+}
 .board_title {
     color: rgb(27, 152, 106);
 }
