@@ -102,9 +102,10 @@ function upload_data(clicks) {
                     var num;
                     try{
                         
-                        if(add_data[i.id] != i.clicks){
-                            num = parseInt(i.clicks) - parseInt(add_data[i.id])
-                            
+                        if(add_data[i.id] != i.clicks && add_data[i.id] != undefined){
+                            num = parseInt(i.clicks) - parseInt(add_data[i.id])+"/s  "
+                                                        $(output_item).children("span").css({"color":"blue"})
+
                         }else{
                             num = ""
                         }
@@ -114,7 +115,7 @@ function upload_data(clicks) {
                         // Note - error messages will vary depending on browser
                     }
                     
-                    $(output_item).children(".lab_click").html(num+"/s "+nFormatter(i.clicks))
+                    $(output_item).children(".lab_click").html(num+nFormatter(i.clicks))
                     add_data[i.id] = i.clicks
                     if(i.id == account){
                         $(output_item).children("span").css({"color":"red","font-weight":"bolder"})
