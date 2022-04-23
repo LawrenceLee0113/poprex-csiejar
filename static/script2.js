@@ -54,7 +54,8 @@ function upload_data(clicks) {
                 var accounts = ranking_sort(data.accounts)
                 // console.log(accounts)
                 for (i of accounts) {
-                    // console.log(i)
+                    console.log(i.ig)
+                    
                     let output_item = $(demo_item).clone();
                     $(output_item).children(".lab_ranking").html(i.ranking)
                     $(output_item).children(".lab_class").html(i.class)
@@ -120,6 +121,7 @@ $(document).ready(function () {
     $(".account_icon").click(function (e) { 
         e.preventDefault();
         $(".login-space").show();
+        $("#save_input").html("未更改！");
         $.get("/self_info", {"account":account},
             function (data, textStatus, jqXHR) {
                 if(data.message == "true"){

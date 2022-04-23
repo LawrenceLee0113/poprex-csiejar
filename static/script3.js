@@ -13,7 +13,7 @@ $(document).ready(function () {
 
             change_input = false;
             $("#save_input").html("儲存中...");
-            $.post("/self_info", {"account":account,"class":$("#class_input").val(),"ig":$("ig_input").val(),"introduce":$("#introduce_input").val(),"name":$("#name_input").val()},
+            $.post("/self_info", {"account":account,"class":$("#class_input").val(),"ig":$("#ig_input").val(),"introduce":$("#introduce_input").val(),"name":$("#name_input").val()},
                 function (data, textStatus, jqXHR) {
                     if(data.message == "true") {
     
