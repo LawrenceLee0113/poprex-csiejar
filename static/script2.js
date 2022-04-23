@@ -1,5 +1,13 @@
+// !animation and upload js
 var clicks = 0;
-
+var renew = false;
+function start_renew(){
+    reload(1);
+    renew = true;
+}
+function stop_renew(){
+    renew = false;
+}
 function down() {
     x = 1
     $("#face2").show();
@@ -46,7 +54,9 @@ function upload_data(clicks) {
         function (data, textStatus, jqXHR) {
             if (data.message == "fail") {
                 if (account != "") {
-                    alert("還敢同時登兩個裝置啊87")
+                    stop_renew();
+                    signOut();
+                    alert("已偵測到第二個裝置 已登出")
                     location.reload();
                 }
             } else if (data.message == "success") {
@@ -54,7 +64,6 @@ function upload_data(clicks) {
                 var accounts = ranking_sort(data.accounts)
                 // console.log(accounts)
                 for (i of accounts) {
-                    console.log(i.ig)
                     
                     let output_item = $(demo_item).clone();
                     $(output_item).children(".lab_ranking").html(i.ranking)
@@ -87,6 +96,22 @@ function detectMob() {
     return toMatch.some((toMatchItem) => {
         return navigator.userAgent.match(toMatchItem);
     });
+}
+var last_click = 0;
+function reload(time) {
+
+    for (let i = 1; i <= time; i++) {
+        window.setTimeout(function () {
+            if(renew){
+                console.log(i)
+                upload_data(clicks - last_click)
+                last_click = clicks;
+                if(i == time){
+                    reload(time)
+                }
+            }
+        }, 1000 * i);
+    }
 }
 var x = 0
 var demo_item;
@@ -138,7 +163,7 @@ $(document).ready(function () {
         );
         
     });
-  $(".login_btn").click(function (e) { 
+    $(".login_btn").click(function (e) { 
         e.preventDefault();
         $(".login-space").show();
     });
@@ -148,20 +173,7 @@ $(document).ready(function () {
     });
 
     demo_item = $(".data_item").clone();
-    var last_click = 0;
-    function reload(time) {
-
-        for (let i = 1; i <= time; i++) {
-            window.setTimeout(function () {
-                // console.log(i);
-                upload_data(clicks - last_click)
-                last_click = clicks;
-                if(i == time){
-                    reload(5)
-                }
-            }, 1000 * i);
-        }
-    }
+    
     let body = $("body")
     if(detectMob()){
         
@@ -175,7 +187,6 @@ $(document).ready(function () {
         $(body).mouseup(up);
     }
 
-
-    reload(5);
+    start_renew();
     
 });

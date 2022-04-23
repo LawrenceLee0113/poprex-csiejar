@@ -1,3 +1,4 @@
+// !sign in sign out js
 var account = ""
 var passcode = ""
 function signOut() {
@@ -5,6 +6,16 @@ function signOut() {
     auth2.signOut().then(function () {
         console.log('User signed out.');
     });
+    $(".g-signin2").show();
+    $(".google_signout").hide();
+
+    $(".eportal_login_btn").show();
+    $('.account_icon').hide();
+    
+    $(".account_icon span").html("");
+    $(".account_icon img").attr("src","");
+    passcode = ""
+    account = ""
     
 }
 function onSignIn(googleUser) {
@@ -45,19 +56,5 @@ function onSignIn(googleUser) {
     );
 }
 $(document).ready(function () {
-    $(".google_signout").click(function (e) { 
-        e.preventDefault();
-        $(".g-signin2").show();
-        $(".google_signout").hide();
-
-        $(".eportal_login_btn").show();
-        $('.account_icon').hide();
-        
-        $(".account_icon span").html("");
-        $(".account_icon img").attr("src","");
-        passcode = ""
-        account = ""
-
-    });
     
 });

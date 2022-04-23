@@ -1,3 +1,4 @@
+// !self info js
 var change_input = false;
 $(document).ready(function () {
     $("#empty_input").click(function (e) { 

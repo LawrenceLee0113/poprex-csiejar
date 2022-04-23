@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, json, jsonify
-import eportal
+# import eportal
 import uuid
 app = Flask(__name__)
 
