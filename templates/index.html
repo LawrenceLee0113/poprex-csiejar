@@ -12,11 +12,14 @@
     <script src="../static/script.js"></script>
     <script src="../static/script3.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <meta name="google-signin-client_id" content="463794153045-1n3oqjl5bt8m10q6pp8di8pjrbc3c4cc.apps.googleusercontent.com">
-    <link rel="short icon" href="https://ik.imagekit.io/csiejarimgstorage/poprexImage/rex.icon_e7QQx1MMd.png?ik-sdk-version=javascript-1.4.3&updatedAt=1650001333253">
+    <meta name="google-signin-client_id"
+        content="463794153045-1n3oqjl5bt8m10q6pp8di8pjrbc3c4cc.apps.googleusercontent.com">
+    <link rel="short icon"
+        href="https://ik.imagekit.io/csiejarimgstorage/poprexImage/rex.icon_e7QQx1MMd.png?ik-sdk-version=javascript-1.4.3&updatedAt=1650001333253">
 </head>
+
 <body>
-    
+
     <!-- title img -->
     <center>
         <div id="title">
@@ -40,10 +43,10 @@
     </center>
     <!-- login btn and log out btn -->
     <div class="login_area">
-        <div class = "eportal_login_btn login_btn">
+        <div class="eportal_login_btn login_btn">
             <a href="">
-    
-                <img src="https://ik.imagekit.io/csiejarimgstorage/poprexImage/icons8-login-64_CGFVcCi4B.png?ik-sdk-version=javascript-1.4.3&updatedAt=1650556731365" alt="login_icon">
+                <img src="https://ik.imagekit.io/csiejarimgstorage/poprexImage/icons8-login-64_CGFVcCi4B.png?ik-sdk-version=javascript-1.4.3&updatedAt=1650556731365"
+                    alt="login_icon">
                 <span>登入</span>
             </a>
         </div>
@@ -51,38 +54,41 @@
         <div class="account_icon eportal_login_btn" style="display:none;">
             <!-- self icon -->
             <a href="">
-                <img src=""  alt="login_icon">
+                <img src="" alt="login_icon">
                 <span>name</span>
             </a>
         </div>
-        <div class = "login-space" style="display: none">
+        <div class="login-space" style="display: none">
             <div class="logined">
                 <h1>帳戶設定</h1>
-                <div class = "cancel_login_ntn">
-                    <a href><img src="https://ik.imagekit.io/csiejarimgstorage/poprexImage/close_KE-2w2TUP2.png?ik-sdk-version=javascript-1.4.3&updatedAt=1650644426410" alt=""></a>
+                <div class="cancel_login_ntn">
+                    <a href><img
+                            src="https://ik.imagekit.io/csiejarimgstorage/poprexImage/close_KE-2w2TUP2.png?ik-sdk-version=javascript-1.4.3&updatedAt=1650644426410"
+                            alt="">
+                        </a>
                 </div>
                 <div class="login_btns">
-                    
+
                     <div class="q_item">
                         <h3>基本資料：</h3>
                     </div>
                     <div class="q_item self_info">
                         <div class="self_info_item">
-                            <span>姓名:</span>
-                            <span id="self_name">李庭愷</span>
+                            <span class="basic_data_title">姓名:</span>
+                            <span id="self_name" class="basic_data_value">李庭愷</span>
                         </div>
-                        <div class = "self_info_item">
-                            <span>gmail:</span>
-                            <span id="self_gmail">lawrencelee0113</span>
+                        <div class="self_info_item">
+                            <span class="basic_data_title">gmail:</span>
+                            <span id="self_gmail" class="basic_data_value">lawrencelee0113</span>
                         </div>
-                        <div class = "self_info_item">
-                            <span>id:</span>
-                            <span id="self_id">118043730404105226670</span>
-                        
+                        <div class="self_info_item">
+                            <span class="basic_data_title">id:</span>
+                            <span id="self_id" class="basic_data_value">118043730404105226670</span>
+
                         </div>
                     </div>
 
-                    
+
                     <div class="q_item">
                         <h3>修改資料：</h3>
                     </div>
@@ -100,14 +106,14 @@
                     </div>
                     <div class="q_item">
                         <span>IG：</span>
-                        <input type="text" placeholder="此處輸入IG" id="ig_input" >
+                        <input type="text" placeholder="此處輸入IG" id="ig_input">
                     </div>
                     <div class="q_item">
                         <span>自我介紹：</span>
                         <input type="text" placeholder="此處輸入自我介紹" id="introduce_input" maxlength="30">
                     </div>
                     <a href="#">
-                        <div onclick="signOut();" class="google_signout" >
+                        <div onclick="signOut();" class="google_signout">
                             <span>登出</span>
                         </div>
                     </a>
@@ -117,14 +123,15 @@
 
             <div class="unlogin">
                 <h1>請選擇登入方式</h1>
-                <div class = "cancel_login_ntn">
-                    <a><img src="https://ik.imagekit.io/csiejarimgstorage/poprexImage/close_KE-2w2TUP2.png?ik-sdk-version=javascript-1.4.3&updatedAt=1650644426410" alt=""></a>
+                <div class="cancel_login_ntn">
+                    <a><img src="https://ik.imagekit.io/csiejarimgstorage/poprexImage/close_KE-2w2TUP2.png?ik-sdk-version=javascript-1.4.3&updatedAt=1650644426410"
+                            alt=""></a>
                 </div>
-                
+
                 <div class="login_btns">
-    
+
                     <div class="g-signin2" data-onsuccess="onSignIn"></div>
-                    
+
                 </div>
             </div>
 
@@ -132,81 +139,58 @@
     </div>
     <!-- score board -->
     <div class="content">
-        <a href="">
-            <div class="data_title">
-                <div class="championship_icon">
-                    <img src="https://ik.imagekit.io/csiejarimgstorage/poprexImage/trophy_hIPpKG8mv.png?ik-sdk-version=javascript-1.4.3&updatedAt=1650606735490"
-                        alt="">
-
+        <div class="content_wrapper">
+            <a href="">
+                <div class="data_title">
+                    <div class="championship_icon">
+                        <img src="https://ik.imagekit.io/csiejarimgstorage/poprexImage/trophy_hIPpKG8mv.png?ik-sdk-version=javascript-1.4.3&updatedAt=1650606735490"
+                            alt="">
+    
+                    </div>
+                    <div class="titles">
+    
+                        <h1 class="board_title">POP REX 記分板</h1>
+                        <div id="ranking_info">
+                            <span id="self_area">
+                                <!--                       <a href=""> -->
+                                <span>&nbsp;&nbsp;&nbsp;排名:</span>
+                                <span id="self_ranking">0</span>
+    
+                                <!--                       </a> -->
+    
+                            </span>
+                            <span id="last_area">
+                                <!--                       <a href="#"> -->
+    
+                                <span>&nbsp;&nbsp;&nbsp;&nbsp;距離</span>
+                                <span id="last_ranking">0</span>
+                                <span id="last_ranking_minus">0</span>
+                                <!--                       </a> -->
+                            </span>
+    
+                        </div>
+                    </div>
+                    <div id="up_icon">
+                        <img src="https://ik.imagekit.io/csiejarimgstorage/poprexImage/up-arrow_NE0CIcxBM.png?ik-sdk-version=javascript-1.4.3&updatedAt=1650602842158"
+                            alt="up_img" id="up_img">
+                        <img src="https://ik.imagekit.io/csiejarimgstorage/poprexImage/down-arrow_ZBfDrCimZ.png?ik-sdk-version=javascript-1.4.3&updatedAt=1650603031465"
+                            alt="down_img" id="down_img" style="display:none">
+                    </div>
                 </div>
-              <style>
-                .titles{
-                    display: flex;
-                    
-                }
-                .titles #ranking_info{
-/*                     margin-bottom:auto; */
-                    display:none;
-                    margin-top:auto;
-                    font-size:20px
-                }
-                #last_area{
-                   color:blue;
-                }
-                #self_area{
-                  color:red;
-                }
-                #last_area a,#self_area a{
-                  width: 100%;
-                  height: 100%;
-                }
-                .account_icon img{
-                  border-radius:40%;
-                }
-            </style>
-                <div class="titles">
-  
-                  <h1 class="board_title">POP REX 記分板</h1>
-                  <div id="ranking_info">
-                    <span id="self_area">
-<!--                       <a href=""> -->
-                        <span>&nbsp;&nbsp;&nbsp;排名:</span>
-                        <span id="self_ranking">0</span>
-                        
-<!--                       </a> -->
-                      
-                    </span>
-                    <span id="last_area">
-<!--                       <a href="#"> -->
-                        
-                        <span>&nbsp;&nbsp;&nbsp;&nbsp;距離</span>
-                        <span id="last_ranking">0</span>
-                        <span id="last_ranking_minus">0</span>
-<!--                       </a> -->
-                    </span>
-                    
-                  </div>
+            </a>
+            <div class="data_content">
+    
+                <div class="data_content_warp">
+                    <div class="data_item" style="display:none">
+                        <span class="lab_ranking">名次</span>
+                        <span class="lab_class">`未設定班級`</span>
+                        <span class="lab_name">`未設定姓名`</span>
+                        <span class="lab_id">`未設定ig`</span>
+                        <span class="lab_click">次數</span>
+                    </div>
                 </div>
-                <div id="up_icon">
-                    <img src="https://ik.imagekit.io/csiejarimgstorage/poprexImage/up-arrow_NE0CIcxBM.png?ik-sdk-version=javascript-1.4.3&updatedAt=1650602842158"
-                        alt="up_img" id="up_img">
-                    <img src="https://ik.imagekit.io/csiejarimgstorage/poprexImage/down-arrow_ZBfDrCimZ.png?ik-sdk-version=javascript-1.4.3&updatedAt=1650603031465"
-                        alt="down_img" id="down_img" style="display:none">
-                </div>
+    
             </div>
-        </a>
-        <div class="data_content">
-            
-            <div class="data_content_warp">
-                <div class="data_item" style="display:none">
-                    <span class="lab_ranking">名次</span>
-                    <span class="lab_class">`未設定班級`</span>
-                    <span class="lab_name">`未設定姓名`</span>
-                    <span class="lab_id">`未設定ig`</span>
-                    <span class="lab_click">次數</span>
-                </div>
-            </div>
-
         </div>
     </div>
 </body>

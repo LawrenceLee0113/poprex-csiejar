@@ -5,32 +5,32 @@ var renew = false;
 function nFormatter(num) {
     num = parseInt(num);
     if (num >= 1000000000) {
-       return (num / 1000000000).toFixed(1).replace(/\.0$/, '') + 'G';
+        return (num / 1000000000).toFixed(1).replace(/\.0$/, '') + 'G';
     }
     if (num >= 1000000) {
-       return (num / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
+        return (num / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
     }
     if (num >= 1000) {
-       return (num / 1000).toFixed(1).replace(/\.0$/, '') + 'K';
+        return (num / 1000).toFixed(1).replace(/\.0$/, '') + 'K';
     }
     return num;
 }
-function click_reset(mode="default"){
-  if(mode=="default"){
-    score.innerText = default_clicks + clicks
-    
-  }else if(mode == "reset"){
-    
-    clicks = 0;
-    default_clicks = 0;
-    score.innerText = default_clicks + clicks
-  }
+function click_reset(mode = "default") {
+    if (mode == "default") {
+        score.innerText = default_clicks + clicks
+
+    } else if (mode == "reset") {
+
+        clicks = 0;
+        default_clicks = 0;
+        score.innerText = default_clicks + clicks
+    }
 }
-function start_renew(){
+function start_renew() {
     reload(1);
     renew = true;
 }
-function stop_renew(){
+function stop_renew() {
     renew = false;
 }
 function down() {
@@ -77,7 +77,7 @@ var add_data = {
 
 }
 function upload_data(clicks) {
-        
+
     $.post("/upload", { "account": account, "passcode": passcode, "clicks": clicks },
         function (data, textStatus, jqXHR) {
             if (data.message == "fail") {
@@ -94,42 +94,42 @@ function upload_data(clicks) {
                 let last_click;
                 for (i of accounts) {
                     let output_item = $(demo_item).clone();
-                    $(output_item).prop("id","ranking_"+i.ranking)
+                    $(output_item).prop("id", "ranking_" + i.ranking)
                     $(output_item).children(".lab_ranking").html(i.ranking)
                     $(output_item).children(".lab_class").html(i.class)
                     $(output_item).children(".lab_name").html(i.name)
                     $(output_item).children(".lab_id").html(i.ig)
                     var num;
-                    try{
-                        
-                        if(add_data[i.id] != i.clicks && add_data[i.id] != undefined){
-                            num = parseInt(i.clicks) - parseInt(add_data[i.id])+"/s  "
-                                                        $(output_item).children("span").css({"color":"blue"})
+                    try {
 
-                        }else{
+                        if (add_data[i.id] != i.clicks && add_data[i.id] != undefined) {
+                            num = parseInt(i.clicks) - parseInt(add_data[i.id]) + "/s  "
+                            $(output_item).children("span").css({ "color": "blue" })
+
+                        } else {
                             num = ""
                         }
-                    }catch (error) {
+                    } catch (error) {
                         console.error(error);
                         // expected output: ReferenceError: nonExistentFunction is not defined
                         // Note - error messages will vary depending on browser
                     }
-                    
-                    $(output_item).children(".lab_click").html(num+nFormatter(i.clicks))
+
+                    $(output_item).children(".lab_click").html(num + nFormatter(i.clicks))
                     add_data[i.id] = i.clicks
-                    if(i.id == account){
-                        $(output_item).children("span").css({"color":"red","font-weight":"bolder"})
-                        $("#self_ranking").html("#"+i.ranking)
-                        $("#last_ranking").html("#"+(parseInt(i.ranking)-1))
-                        $("#last_ranking_minus").html("("+last_click+")")
+                    if (i.id == account) {
+                        $(output_item).children("span").css({ "color": "red", "font-weight": "bolder" })
+                        $("#self_ranking").html("#" + i.ranking)
+                        $("#last_ranking").html("#" + (parseInt(i.ranking) - 1))
+                        $("#last_ranking_minus").html("(-" + last_click-i.clicks + ")")
                         $("#ranking_info").show();
-                        $("#self_area a").prop("href","#ranking_"+i.ranking)
-                        $("#last_area a").prop("href","#ranking_"+(parseInt(i.ranking)-1))
+                        $("#self_area a").prop("href", "#ranking_" + i.ranking)
+                        $("#last_area a").prop("href", "#ranking_" + (parseInt(i.ranking) - 1))
                     }
                     last_click = i.clicks
                     $(output_item).show()
                     $(".data_content_warp").append(output_item);
-                  
+
                     // console.log($(output_item).html())
                     // counter++;
                 }
@@ -149,7 +149,7 @@ function detectMob() {
         /BlackBerry/i,
         /Windows Phone/i
     ];
-    
+
     return toMatch.some((toMatchItem) => {
         return navigator.userAgent.match(toMatchItem);
     });
@@ -159,11 +159,11 @@ function reload(time) {
 
     for (let i = 1; i <= time; i++) {
         window.setTimeout(function () {
-            if(renew){
+            if (renew) {
                 console.log(i)
                 upload_data(clicks - last_click)
                 last_click = clicks;
-                if(i == time){
+                if (i == time) {
                     reload(time)
                 }
             }
@@ -172,22 +172,28 @@ function reload(time) {
 }
 var x = 0
 var demo_item;
+function score_board_up() {
+    $(".content").css("top", "auto").css("bottom", "0px");
+
+    $("#down_img").show();
+    $("#up_img").hide();
+    login_page = true;
+}
+function score_board_down() {
+    $(".content").css("top", "calc(100vh - 46px)").css("bottom", "auto");
+    $("#up_img").show();
+    $("#down_img").hide();
+    login_page = false;
+}
+var login_page = false;
 $(document).ready(function () {
     //score board open and close
-    var login_page = false;
     $(".data_title").click(function (e) {
+        $(".login-space").hide();
         if (login_page) {
-
-            $(".content").css("top", "calc(100vh - 46px)").css("bottom", "auto");
-            $("#up_img").show();
-            $("#down_img").hide();
-            login_page = false;
+            score_board_down()
         } else {
-            $(".content").css("top", "auto").css("bottom", "0px");
-
-            $("#down_img").show();
-            $("#up_img").hide();
-            login_page = true;
+            score_board_up();
         }
 
     });
@@ -200,43 +206,45 @@ $(document).ready(function () {
         e.preventDefault();
 
     });
-    $(".account_icon").click(function (e) { 
+    $(".account_icon").click(function (e) {
         e.preventDefault();
         $(".login-space").show();
         $("#save_input").html("未更改！");
-        $.get("/self_info", {"account":account},
+        score_board_down();
+        $.get("/self_info", { "account": account },
             function (data, textStatus, jqXHR) {
-                if(data.message == "true"){
+                if (data.message == "true") {
                     $("#class_input").val(data.self_info["class"]);
                     $("#name_input").val(data.self_info["name"]);
                     $("#ig_input").val(data.self_info["ig"]);
                     $("#introduce_input").val(data.self_info["introduce"]);
-                }else if(data.message == "false"){
+                } else if (data.message == "false") {
                     console.log(data)
                     alert("取得資料錯誤!!")
                 }
             },
             "json"
         );
-        
+
     });
-    $(".login_btn").click(function (e) { 
+    $(".login_btn").click(function (e) {
         e.preventDefault();
         $(".login-space").show();
+        score_board_down();
     });
-    $(".cancel_login_ntn").click(function (e) { 
+    $(".cancel_login_ntn").click(function (e) {
         e.preventDefault();
         $(".login-space").hide();
     });
 
     demo_item = $(".data_item").clone();
-    
+
     let body = $("body")
-    if(detectMob()){
-        
-        $(body).bind("touchstart",down)
-        $(body).bind("touchend",up)
-    }else{
+    if (detectMob()) {
+
+        $(body).bind("touchstart", down)
+        $(body).bind("touchend", up)
+    } else {
         $(body).keydown(down);
         $(body).mousedown(down);
 
@@ -245,5 +253,5 @@ $(document).ready(function () {
     }
 
     start_renew();
-    
+
 });
