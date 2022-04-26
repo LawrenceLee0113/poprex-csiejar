@@ -133,12 +133,9 @@ function upload_data(clicks) {
                         $(output_item).children("span").css({ "color": "red", "font-weight": "bolder" })
                         $("#self_ranking").html("#" + i.ranking)
                         $("#last_ranking").html("#" + (parseInt(i.ranking) - 1))
-<<<<<<< HEAD
                         $("#last_ranking_minus").html("(-" + last_click - i.clicks + ")")
-=======
                         let last_ranking_minus = parseInt(last_click)-parseInt(i.clicks)
                         $("#last_ranking_minus").html("(-" + last_ranking_minus + ")")
->>>>>>> 8dc062dca16676e895128d5aff767e6478e8ee82
                         $("#ranking_info").show();
                         $("#self_area a").prop("href", "#ranking_" + i.ranking)
                         $("#last_area a").prop("href", "#ranking_" + (parseInt(i.ranking) - 1))
