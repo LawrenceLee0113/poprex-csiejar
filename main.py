@@ -97,6 +97,7 @@ def uploadClick(ac,clicks):
 
 @app.route('/upload',methods=['POST'])
 def upload():
+  print(request.remote_addr)
   ac = request.form.get("account")
   if ac == "":#no login
     nowdata = getnowdata()
