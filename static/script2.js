@@ -121,7 +121,8 @@ function upload_data(clicks) {
                         $(output_item).children("span").css({ "color": "red", "font-weight": "bolder" })
                         $("#self_ranking").html("#" + i.ranking)
                         $("#last_ranking").html("#" + (parseInt(i.ranking) - 1))
-                        $("#last_ranking_minus").html("(-" + last_click-i.clicks + ")")
+                        let last_ranking_minus = parseInt(last_click)-parseInt(i.clicks)
+                        $("#last_ranking_minus").html("(-" + last_ranking_minus + ")")
                         $("#ranking_info").show();
                         $("#self_area a").prop("href", "#ranking_" + i.ranking)
                         $("#last_area a").prop("href", "#ranking_" + (parseInt(i.ranking) - 1))
@@ -186,6 +187,7 @@ function score_board_down() {
     login_page = false;
 }
 var login_page = false;
+var bot = true;
 $(document).ready(function () {
     //score board open and close
     $(".data_title").click(function (e) {
@@ -245,11 +247,22 @@ $(document).ready(function () {
         $(body).bind("touchstart", down)
         $(body).bind("touchend", up)
     } else {
-        $(body).keydown(down);
-        $(body).mousedown(down);
-
-        $(body).keyup(up);
-        $(body).mouseup(up);
+        $("body").mouseenter(function () { 
+            // alert('enter')
+            bot = true;
+        });
+        $("body").mouseleave(function () { 
+            // alert("over")
+            bot = false
+        });
+        if(bot){
+          $(body).keydown(down);
+          $(body).mousedown(down);
+  
+          $(body).keyup(up);
+          $(body).mouseup(up);
+          
+        }
     }
 
     start_renew();
