@@ -33,18 +33,30 @@ function start_renew() {
 function stop_renew() {
     renew = false;
 }
+var play_music = true;
 function down() {
     x = 1
     $("#face2").show();
     $("#face1").hide();
+    if(play_music){
+
+        var sound = document.getElementById("audio");
+        sound.load();
+        sound.play();
+        play_music = false;
+    }
+    // alert("aa")
 }
 function up() {
     // alert("aaa")
     x = 0
     clicks += 1
+    play_music = true;
     score.innerText = default_clicks + clicks
     $("#face1").show();
     $("#face2").hide();
+    // var sound = document.getElementById("audio");
+    // sound.pause()
 }
 function ranking_sort(data) {
     // console.log("rankin sort")
@@ -121,7 +133,7 @@ function upload_data(clicks) {
                         $(output_item).children("span").css({ "color": "red", "font-weight": "bolder" })
                         $("#self_ranking").html("#" + i.ranking)
                         $("#last_ranking").html("#" + (parseInt(i.ranking) - 1))
-                        $("#last_ranking_minus").html("(-" + last_click-i.clicks + ")")
+                        $("#last_ranking_minus").html("(-" + last_click - i.clicks + ")")
                         $("#ranking_info").show();
                         $("#self_area a").prop("href", "#ranking_" + i.ranking)
                         $("#last_area a").prop("href", "#ranking_" + (parseInt(i.ranking) - 1))
@@ -253,5 +265,16 @@ $(document).ready(function () {
     }
 
     start_renew();
+    document.addEventListener('visibilitychange', function () {
+        if (document.visibilityState == 'hidden') {
+            normal_title = document.title; 
+            document.title = '💖記得回來按我喔💖';
+            stop_renew();
+        } else{
+            document.title = normal_title;
+            start_renew();
+            
+        }
+    });
 
 });

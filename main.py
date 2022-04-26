@@ -4,19 +4,19 @@ import uuid
 app = Flask(__name__)
 
 
-
 @app.route('/')
 def index_page():
   return render_template("index.html")
 
-def login_by_google(ac):
+def login_by_google(ac,name):
   with open("static/data/amount.json") as file:
     data = json.load(file)
   if ac in data["accounts"]:
     data["accounts"][ac]["login_time"]+=1
+    data["accounts"][ac]["basic"]["real_name"]=name
     with open("static/data/amount.json", "w") as file:
       json.dump(data, file)
-    True
+    return True
   else:
     return False
 
@@ -31,7 +31,8 @@ def create_account(id,name,email):
       "class":"no class",
       "email":email,
       "ig":"none",
-      "introduce":"none"
+      "introduce":"none",
+      "real_name":name
 
     },
     "login_time":1,
@@ -53,8 +54,8 @@ def create_passcode(id):
 def google_login():
   try:
     id = request.form.get("id")
-    if login_by_google(id) == False:
-      name = request.form.get("name")
+    name = request.form.get("name")
+    if login_by_google(id,name) == False:
       email = request.form.get("email")
       create_account(id,name,email)
     with open("static/data/amount.json") as file:
