@@ -122,10 +122,6 @@ body {
     left: 20px;
 }
 
-.eportal_login_btn {
-    width: 60px;
-
-}
 
 .eportal_login_btn a {
     text-decoration: none;
@@ -141,6 +137,16 @@ body {
     text-align: center;
     color: rgb(255, 177, 177);
 }
+.login_area{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .login_area .login-space {
     width: 100%;
@@ -150,11 +156,12 @@ body {
     /* height: auto; */
     /* height: 200px; */
     background-color: rgba(255, 227, 227, 0.834);
-    position: fixed;
+    position: relative;
+    /* position: fixed;
     top: 200px;
     right: 0;
     left: 0;
-    margin: auto;
+    margin: auto; */
 
     border-radius: 10px;
     border: 2px solid rgb(20, 20, 20);
@@ -269,7 +276,7 @@ body {
     display: none;
     flex-direction: column;
     align-items: center;
-/*     display: flex; */
+    display: flex;
 }
 
 .unlogin {
@@ -278,7 +285,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-/*     display: none; */
+    display: none;
 
 }
 
@@ -357,4 +364,21 @@ a {
 
 .account_icon img {
     border-radius: 40%;
+}
+@media screen and (max-width: 768px) {
+    .titles #ranking_info{
+        font-size:10px
+    }
+    .board_title{
+        font-size:20px
+    }
+    .data_item span{
+        font-size:10px
+    }
+    .login_area .eportal_login_btn{
+        width: 45px;
+    }
+    .eportal_login_btn span{
+        font-size: 15px;
+    }
 }
