@@ -100,10 +100,14 @@ function upload_data(clicks) {
                     location.reload();
                 }
             } else if (data.message == "success") {
+                upload_time += 1;
                 $(".data_content_warp").empty();
                 var accounts = ranking_sort(data.accounts)
                 // console.log(accounts)
                 let last_click;
+                if(upload_time == 1){
+                    set_more_info(accounts);
+                }
                 for (i of accounts) {
                     let output_item = $(demo_item).clone();
                     $(output_item).prop("id", "ranking_" + i.ranking)
@@ -169,6 +173,7 @@ function detectMob() {
     });
 }
 var last_click = 0;
+var upload_time = 0;
 function reload(time) {
 
     for (let i = 1; i <= time; i++) {
@@ -290,5 +295,6 @@ $(document).ready(function () {
             
         }
     });
+    
 
 });

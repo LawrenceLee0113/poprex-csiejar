@@ -149,8 +149,7 @@ def edit_self_info():
       return jsonify({"message":"true"})
     except Exception:
       return jsonify({"message":"false"})
-
-
+  
 #run server
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=8080, debug=True)
