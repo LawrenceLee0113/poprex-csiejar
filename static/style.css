@@ -126,6 +126,9 @@ body {
 .eportal_login_btn a {
     text-decoration: none;
 }
+.eportal_login_btn img{
+  width:100%;
+}
 
 .eportal_login_btn a {
     display: flex;
@@ -260,14 +263,13 @@ body {
 
 .login_btns {
     border-top: 1px solid rgba(255, 255, 255, 0.636);
-    width: 100%;
+    width: calc(100% - 30px);
     height: calc(100% - 45px);
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding: 5px 15px 5px 15px;
 }
 
 .logined {
@@ -276,7 +278,7 @@ body {
     display: none;
     flex-direction: column;
     align-items: center;
-    display: flex;
+/*     display: flex; */
 }
 
 .unlogin {
@@ -285,7 +287,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    display: none;
+/*     display: none; */
 
 }
 
@@ -367,13 +369,16 @@ a {
 }
 @media screen and (max-width: 768px) {
     .titles #ranking_info{
-        font-size:10px
+        font-size:8px
     }
     .board_title{
-        font-size:20px
+        font-size:15px
     }
     .data_item span{
         font-size:10px
+    }
+    .data_item{
+      height: 20px;
     }
     .login_area .eportal_login_btn{
         width: 45px;
