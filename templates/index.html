@@ -11,6 +11,7 @@
     <script src="../static/script2.js"></script>
     <script src="../static/script.js"></script>
     <script src="../static/script3.js"></script>
+    <script src="../static/script4.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <meta name="google-signin-client_id"
         content="463794153045-1n3oqjl5bt8m10q6pp8di8pjrbc3c4cc.apps.googleusercontent.com">
@@ -95,52 +96,7 @@
         <source src="../static/audio1.mp3" type="audio/mpeg">
     </audio>
 
-    <div class="person_info">
-        <div class="person_info_warp">
-            <div class="page_left"><img
-                    src="https://ik.imagekit.io/csiejarimgstorage/poprexImage/left-arrow_kFG4v9-T5.png?ik-sdk-version=javascript-1.4.3&updatedAt=1651037111143"
-                    alt="left icon"></div>
-            <div class="person_info_space">
-                <div class="person_info_item">
-                    <div class="person_info_title">
-                        <h1>這是title</h1>
-                    </div>
-                    <div class="person_info_content">
-                        <span class="self_introduce">Lorem, ipsum dolor sit amet consectetur adipisicing elit. A,
-                            repudiandae cumque deleniti facilis tenetur nesciunt ad! Magni maiores ratione quia
-                            reprehenderit incidunt reiciendis quae, doloremque consequuntur in non praesentium
-                            expedita.</span>
-                        <a href="" class="self_ig_link"></a>
-                    </div>
-                </div>
-            </div>
-            <div class="person_info_leave_btn">
-                <button class="close_page_btn">離開</button>
-            </div>
-            <div class="page_right"><img
-                    src="https://ik.imagekit.io/csiejarimgstorage/poprexImage/right-arrow_C4mo78ABI.png?ik-sdk-version=javascript-1.4.3&updatedAt=1651037111154"
-                    alt="right icon"></div>
-        </div>
-    </div>
-    <script>
-        var info_item = $(".person_info_item")
-        console.log("empty")
-        $(".person_info_space").empty();
-        function set_more_info(accounts) {
-            for (let i of accounts) {
-                var now_item = $(info_item).clone(true, true);
-                $(now_item).find(".self_ig_link").html("ig: " + i.ig).prop("href", "https://www.instagram.com/" + i.ig + "/");
-                $(now_item).find(".self_introduce").html(i.introduce)
-                $(".person_info_space").append(now_item);
-            }
-        }
-        $(document).ready(function () {
-            $(".close_page_btn").click(function (e) {
-                $(".person_info").hide();
-            });
-
-        });
-    </script>
+    <script src="../static/script4.js"></script>
     <!-- title img -->
     <center>
         <div id="title">
@@ -306,10 +262,16 @@
                         <span class="lab_ranking">名次</span>
                         <span class="lab_class">`未設定班級`</span>
                         <span class="lab_name">`未設定姓名`</span>
-                        <span class="lab_id">`未設定ig`</span>
+                        <!-- <div class="more_info">
+                            <span>more info</span>
+                        </div> -->
+                        <a class="lab_id">`未設定ig`</a>
                         <span class="lab_click">次數</span>
                     </div>
                 </div>
+                <script>
+                    
+                </script>
 
             </div>
         </div>

@@ -24,7 +24,7 @@ font {
 
 #face {
     /* width: 50vh; */
-    height: 70vh;
+    height: 60vh;
 
 }
 
@@ -55,7 +55,7 @@ body {
     margin: auto;
 }
 .content_wrapper{
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0);
     width: 100%;
     max-width:720px;
     border: 3px solid #111;
@@ -63,15 +63,15 @@ body {
     overflow: hidden;
 }
 
-.content a {
+.content_wrapper a {
     text-decoration: none;
-    color: black;
 }
 
 .data_title {
     width: 100%;
     height: 40px;
-    background-color: rgba(242, 125, 236, 0.563);
+    background-color: rgb(255, 224, 98);
+    color:white;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -87,11 +87,10 @@ body {
 .data_item {
     width: 100%;
     height: 40px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.479);
     display: flex;
-    /* justify-content: center; */
     align-items: center;
-    /* padding: 0 20px 0 20px; */
+    padding: 0px 10px 0px 10px;
+    background-color: rgba(255, 237, 167, 0.917);
 }
 
 .data_item span {
@@ -107,12 +106,14 @@ body {
     width: 100%;
     height: calc(100% - 40px);
     overflow: auto;
+    background-color: rgba(255, 255, 255, 0.9);
 
 }
 
 .data_content_warp {
     width: calc(100% - 20px);
-    padding: 0px 10px 20px 10px;
+    padding: 0px 0px 20px 0px;
+    /* padding: 0px 10px 20px 10px; */
 }
 
 .login_area .eportal_login_btn {
@@ -120,6 +121,7 @@ body {
     position: fixed;
     top: 20px;
     left: 20px;
+    /* z-index: 100; */
 }
 
 
@@ -145,6 +147,7 @@ body {
     height: 100%;
     position: absolute;
     top: 0;
+    /* z-index: -3; */
     right: 0;
     display: flex;
     justify-content: center;
@@ -229,7 +232,8 @@ body {
 }
 
 .board_title {
-    color: rgb(27, 152, 106);
+    color: rgb(255, 255, 255);
+    text-shadow: 0.1em 0.1em 0.2em #333
 }
 
 .lab_ranking {
@@ -239,9 +243,6 @@ body {
     margin-right: .5rem;
 }
 
-.data_item {
-    display: flex;
-}
 
 .lab_click {
     margin-left: auto;

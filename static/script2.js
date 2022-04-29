@@ -88,6 +88,7 @@ function ranking_sort(data) {
 var add_data = {
 
 }
+
 function upload_data(clicks) {
 
     $.post("/upload", { "account": account, "passcode": passcode, "clicks": clicks },
@@ -105,16 +106,27 @@ function upload_data(clicks) {
                 var accounts = ranking_sort(data.accounts)
                 // console.log(accounts)
                 let last_click;
-                if(upload_time == 1){
-                    set_more_info(accounts);
-                }
+                // if(upload_time == 1){
+                //     set_more_info(accounts);
+                // }
+                var item_counter = -1
                 for (i of accounts) {
-                    let output_item = $(demo_item).clone();
+                    item_counter += 1;
+                    let output_item = $(demo_item).clone(true,true);
                     $(output_item).prop("id", "ranking_" + i.ranking)
                     $(output_item).children(".lab_ranking").html(i.ranking)
                     $(output_item).children(".lab_class").html(i.class)
                     $(output_item).children(".lab_name").html(i.name)
-                    $(output_item).children(".lab_id").html(i.ig)
+                    if(i.ig == "none"){
+                        $(output_item).children(".lab_id").html("")
+                    }else{
+                        $(output_item).children(".lab_id").html("IG: "+i.ig).prop("href","https://www.instagram.com/" + i.ig + "/")
+
+                    }
+                    $(output_item).children(".more_info").prop("id",i.id);
+                    if(parseInt(item_counter/5)%2==0){
+                        $(output_item).css("background","rgba(255, 255, 255, 0.9)")
+                    }
                     var num;
                     try {
 
@@ -247,6 +259,11 @@ $(document).ready(function () {
         );
 
     });
+    $(".lab_id").click(function (e) { 
+        var href = $(this).prop("href");
+        location.href = href;
+        
+    });
     $(".login_btn").click(function (e) {
         e.preventDefault();
         $(".login-space").show();
@@ -257,7 +274,7 @@ $(document).ready(function () {
         $(".login-space").hide();
     });
 
-    demo_item = $(".data_item").clone();
+    demo_item = $(".data_item").clone(true,true);
 
     let body = $("body")
     if (detectMob()) {
@@ -295,6 +312,5 @@ $(document).ready(function () {
             
         }
     });
-    
 
 });
